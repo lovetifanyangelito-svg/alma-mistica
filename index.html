@@ -1,2 +1,112 @@
 <!DOCTYPE html>
 <html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alma Mística</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;
+ font-family:Georgia,serif;
+ color:#fff1d6;text-align:center;
+ background:radial-gradient(circle at top,#48205f,#170d2c 65%,#090714);
+ padding:25px 15px;
+}
+h1{color:#f5d58a;font-size:38px;margin-bottom:5px}
+.sub{color:#d9bce9;font-style:italic}
+.panel{max-width:650px;margin:25px auto;padding:22px;
+ background:#ffffff0d;border:1px solid #c49b65;border-radius:20px}
+.cards{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:25px 0}
+.card{
+ width:105px;height:165px;border:2px solid #d8b36c;
+ border-radius:12px;background:linear-gradient(145deg,#47245f,#171027);
+ display:flex;align-items:center;justify-content:center;
+ flex-direction:column;font-size:38px;cursor:pointer;
+ transition:.2s;
+}
+.card.selected{background:linear-gradient(145deg,#a36c39,#47245f);transform:translateY(-8px)}
+.card small{font-size:12px;margin-top:12px;color:#f5d58a}
+button{
+ border:0;border-radius:25px;padding:13px 25px;
+ background:#e7c17a;color:#281638;font-weight:bold;
+ font-size:16px;cursor:pointer;margin:8px;
+}
+button:disabled{opacity:.4;cursor:not-allowed}
+#result{line-height:1.7;font-size:17px}
+footer{color:#c9b4d7;font-size:12px;margin:35px auto}
+</style>
+</head>
+<body>
+<h1>✦ ALMA MÍSTICA ✦</h1>
+<p class="sub">Descubre los mensajes que el universo tiene para ti</p>
+
+<div class="panel">
+<h2>🔮 Tu lectura del destino</h2>
+<p>Concéntrate, piensa en tu pregunta y elige tres cartas.</p>
+
+<div class="cards">
+<div class="card" onclick="choose(0)">🌙<small>Pasado</small></div>
+<div class="card" onclick="choose(1)">✨<small>Presente</small></div>
+<div class="card" onclick="choose(2)">⭐<small>Futuro</small></div>
+</div>
+
+<p id="counter">Cartas elegidas: 0 de 3</p>
+<button id="read" onclick="reading()" disabled>Revelar mi lectura</button>
+<div id="result"></div>
+<button onclick="reset()" style="display:none" id="again">Nueva lectura</button>
+</div>
+
+<footer>Alma Mística © 2026 · Un espacio para reflexionar y conectar contigo</footer>
+
+<script>
+const deck=[
+["🌞","El Sol","La claridad y la alegría llegan a tu camino. Confía en tus capacidades."],
+["🌙","La Luna","Escucha tu intuición y presta atención a tus emociones."],
+["⭐","La Estrella","Renace la esperanza. Permítete soñar y comenzar de nuevo."],
+["❤️","Los Enamorados","El amor y las decisiones del corazón toman protagonismo."],
+["🦁","La Fuerza","Tienes más fortaleza de la que imaginas. Sigue adelante."],
+["🔮","La Sacerdotisa","Busca las respuestas dentro de ti. Tu intuición merece atención."],
+["🌍","El Mundo","Una etapa puede estar llegando a su culminación. Celebra tus avances."],
+["⚖️","La Justicia","Busca equilibrio, honestidad y decisiones conscientes."],
+["🌟","El Mago","Tienes recursos para comenzar algo nuevo y transformar tus ideas."],
+["🕊️","La Templanza","La paciencia y la armonía pueden ayudarte a encontrar tu camino."]
+];
+let selected=[];
+function choose(i){
+ if(selected.length>=3 || selected.some(x=>x.position===i))return;
+ const available=deck.filter(c=>!selected.some(x=>x.card===c));
+ const card=available[Math.floor(Math.random()*available.length)];
+ selected.push({position:i,card});
+ document.querySelectorAll(".card")[i].innerHTML="🌟<small>Elegida</small>";
+ document.querySelectorAll(".card")[i].classList.add("selected");
+ document.getElementById("counter").textContent="Cartas elegidas: "+selected.length+" de 3";
+ document.getElementById("read").disabled=selected.length!==3;
+}
+function reading(){
+ const names=["Pasado","Presente","Futuro"];
+ let html="<h2>✨ Tu mensaje del universo ✨</h2>";
+ selected.sort((a,b)=>a.position-b.position);
+ selected.forEach(x=>{
+ html+="<h3>"+names[x.position]+": "+x.card[0]+" "+x.card[1]+"</h3><p>"+x.card[2]+"</p>";
+ });
+ html+="<p><i>Recuerda: esta lectura es una guía simbólica para tu reflexión personal, no una predicción segura del futuro.</i></p>";
+ document.getElementById("result").innerHTML=html;
+ document.getElementById("again").style.display="inline-block";
+ document.getElementById("read").style.display="none";
+}
+function reset(){
+ selected=[];
+ document.querySelectorAll(".card").forEach((c,i)=>{
+ c.innerHTML=["🌙","✨","⭐"][i]+"<small>"+["Pasado","Presente","Futuro"][i]+"</small>";
+ c.classList.remove("selected");
+ });
+ document.getElementById("counter").textContent="Cartas elegidas: 0 de 3";
+ document.getElementById("read").disabled=true;
+ document.getElementById("read").style.display="inline-block";
+ document.getElementById("again").style.display="none";
+ document.getElementById("result").innerHTML="";
+}
+</script>
+</body>
+</html>
