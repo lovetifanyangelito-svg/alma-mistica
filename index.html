@@ -3,17 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Alma Mística - Tarot Cósmico</title>
+<title>Alma Mística | Tarot y Destino</title>
 <style>
 *{box-sizing:border-box}
 body{
- margin:0;color:#fff1dc;font-family:Georgia,serif;
+ margin:0;color:#fff0d7;font-family:Georgia,serif;
  background:
- radial-gradient(ellipse at 50% 25%,#57208e 0%,transparent 48%),
- radial-gradient(ellipse at 10% 90%,#40105d,transparent 45%),
- radial-gradient(ellipse at 90% 80%,#26105a,transparent 40%),
- #08051b;
- min-height:100vh;overflow-x:hidden;
+ radial-gradient(ellipse at 50% 35%,#71349b 0%,transparent 48%),
+ radial-gradient(ellipse at 10% 90%,#48145e,transparent 45%),
+ #080417;
+ min-height:100vh;
 }
 body:before{
  content:"";position:fixed;inset:0;pointer-events:none;
@@ -22,51 +21,87 @@ body:before{
  radial-gradient(2px 2px at 80% 20%,#ffe3a1 50%,transparent),
  radial-gradient(1px 1px at 60% 70%,#fff 50%,transparent),
  radial-gradient(2px 2px at 40% 80%,#d4a6ff 50%,transparent);
- background-size:170px 170px;
- opacity:.65;z-index:-1;
+ background-size:170px 170px;opacity:.65;
 }
-header{text-align:center;padding:30px 12px 12px}
-.logo{font-size:48px;color:#ffd36b;text-shadow:0 0 25px #ffc04e}
+header{text-align:center;padding:25px 12px}
 h1{
- font-size:clamp(30px,7vw,48px);letter-spacing:5px;
- color:#ffe3a0;margin:7px;
- text-shadow:0 0 20px #f5b943;
+ font-size:clamp(30px,7vw,48px);
+ letter-spacing:4px;color:#ffe3a0;
+ text-shadow:0 0 22px #ffc04e;margin:8px;
 }
-.subtitle{color:#e4c5ff;font-style:italic}
+.logo{font-size:42px;color:#ffd36b;text-shadow:0 0 20px #ffc04e}
+.subtitle{color:#e9caff;font-style:italic}
 .line{
- height:1px;width:180px;margin:20px auto;
- background:linear-gradient(90deg,transparent,#ffda81,transparent);
+ height:1px;width:180px;margin:18px auto;
+ background:linear-gradient(90deg,transparent,#ffda81,transparent)
 }
-.container{max-width:1000px;margin:auto;padding:12px}
+.container{max-width:950px;margin:auto;padding:12px}
 .panel{
- text-align:center;padding:26px 16px;margin:20px 0;
+ text-align:center;padding:25px 16px;margin:20px 0;
  border:1px solid #d8ad60;border-radius:24px;
- background:linear-gradient(145deg,#29104dE8,#180c38F2);
- box-shadow:0 0 30px #a34aff20,inset 0 0 25px #eac06b12;
+ background:linear-gradient(145deg,#29104df2,#180c38f5);
+ box-shadow:0 0 35px #a34aff25,inset 0 0 25px #eac06b12;
+ position:relative;overflow:hidden;
 }
-h2{color:#ffda8a;font-size:27px}
+h2{color:#ffda8a;font-size:26px}
+p{line-height:1.65}
 label{display:block;color:#ffda8a;margin:16px}
-input,select{
+input,select,textarea{
  width:100%;max-width:540px;padding:14px;
  border:1px solid #d5ad61;border-radius:12px;
  background:#100923;color:white;font-size:16px;
+ font-family:Georgia,serif;
 }
+textarea{min-height:85px;resize:vertical}
 button{
  border:1px solid #ffe4a3;border-radius:40px;
- padding:14px 25px;margin:12px 5px;
+ padding:14px 24px;margin:10px 5px;
  background:linear-gradient(120deg,#ffe7a3,#c38b36);
- color:#32164b;font-weight:bold;font-size:16px;cursor:pointer;
- transition:.3s;
+ color:#32164b;font-weight:bold;font-size:16px;
+ cursor:pointer;transition:.3s;
 }
 button:hover{transform:translateY(-3px);box-shadow:0 0 20px #ffcf69}
 button:disabled{opacity:.4;cursor:not-allowed}
+.pay{
+ display:inline-block;text-decoration:none;
+ border:1px solid #ffe4a3;border-radius:40px;
+ padding:15px 25px;margin:12px 5px;
+ background:linear-gradient(120deg,#ffe7a3,#c38b36);
+ color:#32164b;font-weight:bold;
+}
 .hidden{display:none!important}
-.book{font-size:45px;margin:12px}
+.price{
+ color:#ffe1a0;font-size:35px;font-weight:bold;
+ text-shadow:0 0 15px #e8ad48;
+}
+.candles{
+ display:flex;justify-content:center;gap:35px;
+ align-items:end;height:115px;margin:15px auto 20px;
+}
+.candle{position:relative;width:20px;height:65px;
+ background:linear-gradient(90deg,#8f4b28,#f8d58c,#9b542c);
+ border-radius:5px 5px 2px 2px;
+ box-shadow:0 0 20px #ffb84d55;
+}
+.candle:nth-child(2){height:85px}
+.flame{
+ position:absolute;left:3px;top:-27px;width:14px;height:27px;
+ background:radial-gradient(ellipse at 50% 70%,#fff8c9 0%,#ffc44d 45%,#ff702d 75%,transparent 78%);
+ border-radius:50% 50% 45% 45%;
+ transform-origin:bottom;
+ animation:flicker .8s infinite alternate;
+ filter:drop-shadow(0 0 9px #ffbd48);
+}
+.candle:nth-child(2) .flame{animation-delay:.3s}
+@keyframes flicker{
+ from{transform:rotate(-5deg) scale(.9)}
+ to{transform:rotate(5deg) scale(1.12)}
+}
 .cards{
  display:flex;justify-content:center;flex-wrap:wrap;
- gap:16px;margin:28px 0;
+ gap:15px;margin:25px 0;
 }
-.card{width:135px;height:225px;perspective:1000px;cursor:pointer}
+.card{width:125px;height:210px;perspective:1000px;cursor:pointer}
 .inner{
  width:100%;height:100%;position:relative;
  transform-style:preserve-3d;transition:transform .9s;
@@ -76,11 +111,10 @@ button:disabled{opacity:.4;cursor:not-allowed}
  position:absolute;inset:0;backface-visibility:hidden;
  border:3px solid #eac36e;border-radius:12px;
  padding:7px;overflow:hidden;
- box-shadow:0 0 14px #d9a74644;
+ box-shadow:0 0 16px #d9a74655;
 }
 .back{
- background:
- radial-gradient(circle at center,#712ba4,#180a38 68%,#09051d);
+ background:radial-gradient(circle at center,#712ba4,#180a38 68%,#09051d);
  display:flex;align-items:center;justify-content:center;
 }
 .back:before{
@@ -92,55 +126,52 @@ button:disabled{opacity:.4;cursor:not-allowed}
  border:1px solid #bc8c45;border-radius:50%;
 }
 .orbit{
- position:relative;width:91px;height:130px;
+ position:relative;width:85px;height:125px;
  display:flex;align-items:center;justify-content:center;
  border:2px solid #e6b95d;border-radius:50%;
- box-shadow:0 0 15px #ffd26d66;
+ box-shadow:0 0 18px #ffd26d77;
 }
-.sun{
- color:#ffda78;font-size:48px;
- text-shadow:0 0 15px #ffbb37;
-}
+.sun{color:#ffda78;font-size:43px;text-shadow:0 0 15px #ffbb37}
 .moon{position:absolute;top:-13px;left:-12px;color:#ffe09a;font-size:25px}
 .star{position:absolute;bottom:-12px;right:-12px;color:#ffe09a;font-size:25px}
-.corner{position:absolute;color:#ffdc88;font-size:17px}
-.c1{top:12px;left:13px}.c2{top:12px;right:13px}
-.c3{bottom:12px;left:13px}.c4{bottom:12px;right:13px}
 .front{
- transform:rotateY(180deg);
- background:#100823;
+ transform:rotateY(180deg);background:#100823;
  display:flex;align-items:center;justify-content:center;
 }
 .front img{width:100%;height:100%;object-fit:contain}
 .front-name{
- position:absolute;bottom:5px;left:5px;right:5px;
- text-align:center;padding:7px 2px;
- color:#ffe5a5;background:#160a28eF;font-size:12px;
+ position:absolute;bottom:4px;left:4px;right:4px;
+ text-align:center;padding:6px 2px;
+ color:#ffe5a5;background:#160a28ed;font-size:12px;
 }
-.card.selected .back{
- box-shadow:0 0 22px #ffdc78;
- border-color:#fff0b5;
-}
-.card.selected{transform:translateY(-7px)}
 .counter{color:#ffe2a0;font-weight:bold}
-.reading{text-align:left;line-height:1.7}
+.reading{text-align:left;line-height:1.8}
 .result-card{
  background:#190d34;border:1px solid #b78c4e;
  border-radius:14px;padding:17px;margin:16px 0;
 }
-.result-card h3{color:#ffdb91}
+.result-card h3{color:#ffdb91;text-align:center}
 .result-card img{
  display:block;width:135px;max-height:220px;
  object-fit:contain;margin:12px auto;
  border:2px solid #e6bf72;border-radius:6px;
 }
+.chatbox{
+ background:#100923;border:1px solid #b78c4e;
+ padding:15px;border-radius:15px;margin-top:20px;text-align:left;
+}
+.answer{
+ background:#291747;border-left:3px solid #e5bd70;
+ padding:13px;margin:12px 0;border-radius:8px;
+ line-height:1.7;
+}
 footer{text-align:center;color:#d4b5e7;padding:30px 10px;font-size:13px}
 footer a{color:#ffdc88}
 @media(max-width:420px){
- .card{width:105px;height:180px}
+ .card{width:100px;height:175px}
  .orbit{width:70px;height:105px}
  .sun{font-size:36px}
- .panel{padding:22px 10px}
+ .panel{padding:20px 10px}
 }
 </style>
 </head>
@@ -149,17 +180,36 @@ footer a{color:#ffdc88}
 <header>
  <div class="logo">☽ ✦ ☀ ✦ ☾</div>
  <h1>ALMA MÍSTICA</h1>
- <p class="subtitle">Descubre los secretos del universo</p>
+ <p class="subtitle">Un encuentro con los mensajes de tu destino</p>
  <div class="line"></div>
  <p>🔮 Tarot · Amor · Destino · Prosperidad</p>
+ <div class="candles">
+  <div class="candle"><span class="flame"></span></div>
+  <div class="candle"><span class="flame"></span></div>
+  <div class="candle"><span class="flame"></span></div>
+ </div>
 </header>
 
 <main class="container">
+
 <section class="panel" id="inicio">
- <div class="book">📖</div>
+ <div class="logo">✧ ☽ ✧</div>
  <h2>Bienvenida al universo místico</h2>
  <p>Enciende tu intuición, conecta con tu energía y descubre el mensaje de tus cartas.</p>
  <div class="line"></div>
+
+ <h2>Consulta Premium</h2>
+ <div class="price">$15.000 COP</div>
+ <p>Incluye lectura de tres cartas y cinco preguntas adicionales.</p>
+
+ <a class="pay" href="https://mpago.li/1FRVddo" target="_blank" rel="noopener">
+  💳 Pagar con Mercado Pago
+ </a>
+
+ <p style="font-size:13px;color:#e9caff">
+  Después de realizar el pago, continúa con tu consulta.
+  La confirmación del pago debe hacerse por separado.
+ </p>
 
  <label>ELIGE TU CONSULTA</label>
  <select id="tipo">
@@ -171,20 +221,20 @@ footer a{color:#ffdc88}
  </select>
 
  <label>ESCRIBE TU PREGUNTA</label>
- <input id="pregunta" placeholder="¿Qué deseas saber?" maxlength="180">
- <br><br>
- <button id="comenzar" onclick="comenzar()">✨ Abrir mi lectura ✨</button>
+ <textarea id="pregunta" maxlength="180" placeholder="¿Qué deseas consultar?"></textarea>
+ <br>
+ <button id="comenzar" onclick="comenzar()">✨ Comenzar mi lectura ✨</button>
  <p id="estado"></p>
 </section>
 
 <section class="panel hidden" id="seleccion">
  <div class="logo">☽ ✧ ☾</div>
  <h2>Elige tus tres cartas</h2>
- <p>Concéntrate en tu pregunta y deja que tu intuición te guíe.</p>
+ <p>Concéntrate en tu pregunta. Toca las cartas para descubrirlas una por una.</p>
  <div class="line"></div>
  <div class="cards" id="cartas"></div>
  <p class="counter" id="contador">Cartas elegidas: 0 de 3</p>
- <button id="revelar" disabled onclick="revelar()">Revelar mi destino ✨</button>
+ <button id="revelar" disabled onclick="revelar()">Ver mi interpretación ✨</button>
  <button onclick="reiniciar()">Volver</button>
 </section>
 
@@ -194,11 +244,26 @@ footer a{color:#ffdc88}
  <div class="line"></div>
  <p id="consulta"></p>
  <div id="lectura" class="reading"></div>
- <div class="line"></div>
- <h2>✧ Mensaje para tu alma ✧</h2>
- <p id="mensaje"></p>
+
+ <div class="result-card">
+  <h3>✧ Mensaje para tu alma ✧</h3>
+  <p id="mensaje"></p>
+ </div>
+
+ <div class="chatbox" id="chat">
+  <h2>🔮 Conversa con Alma Mística</h2>
+  <p>Realiza hasta cinco preguntas adicionales sobre tu lectura.</p>
+  <p class="counter" id="preguntasRestantes">Preguntas disponibles: 5 de 5</p>
+  <div id="respuestas"></div>
+  <label>Tu pregunta adicional</label>
+  <textarea id="preguntaExtra" maxlength="250" placeholder="Escribe aquí tu pregunta..."></textarea>
+  <button id="enviarPregunta" onclick="responder()">Enviar pregunta ✨</button>
+  <p id="limite"></p>
+ </div>
+
  <button onclick="reiniciar()">Nueva lectura</button>
 </section>
+
 </main>
 
 <footer>
@@ -228,28 +293,28 @@ const nombres={
 };
 
 const traducciones={
-"the-fool":"Un nuevo comienzo te invita a explorar. Confía en tus posibilidades y actúa con prudencia.",
-"the-magician":"Tienes recursos y capacidades para convertir tus ideas en realidad.",
-"the-high-priestess":"Escucha tu intuición. Algunas respuestas necesitan tiempo y silencio.",
-"the-empress":"La creatividad, el amor propio y la abundancia pueden crecer en tu vida.",
-"the-emperor":"Es momento de establecer orden, seguridad y límites saludables.",
-"the-hierophant":"El aprendizaje y la orientación pueden ayudarte a tomar decisiones.",
-"the-lovers":"El amor y las decisiones importantes te invitan a escuchar tu corazón.",
-"the-chariot":"Avanza con determinación y mantén el rumbo hacia tus objetivos.",
-"strength":"Tu paciencia y valentía son fortalezas importantes.",
-"the-hermit":"Una pausa puede ayudarte a encontrar respuestas dentro de ti.",
-"wheel-of-fortune":"Los ciclos cambian. Mantente abierta a nuevas oportunidades.",
-"justice":"Busca equilibrio y honestidad en tus decisiones.",
-"the-hanged-man":"Una nueva perspectiva puede transformar tu manera de ver las cosas.",
-"death":"El cierre de una etapa puede abrir espacio a una transformación.",
-"temperance":"La armonía llega con paciencia, moderación y equilibrio.",
-"the-devil":"Reconoce los hábitos o apegos que pueden limitar tu libertad.",
-"the-tower":"Un cambio puede invitarte a reconstruir sobre bases más firmes.",
-"the-star":"La esperanza y la renovación te invitan a recuperar la confianza.",
-"the-moon":"Observa tus emociones y busca claridad antes de tomar decisiones.",
-"the-sun":"La claridad, la alegría y la vitalidad iluminan tus proyectos.",
-"judgement":"Es tiempo de reflexionar y reconocer nuevas oportunidades.",
-"the-world":"Un ciclo llega a su culminación. Reconoce tus aprendizajes."
+"the-fool":"Un nuevo comienzo te invita a explorar. Esta carta habla de libertad, curiosidad y oportunidades. Confía en tus posibilidades, pero recuerda observar el camino antes de dar cada paso.",
+"the-magician":"Tienes recursos y capacidades para convertir tus ideas en realidad. Es momento de organizar tus talentos, comunicar lo que deseas y actuar con confianza.",
+"the-high-priestess":"Escucha tu intuición. Algunas respuestas necesitan tiempo y silencio. No te apresures: observa las señales y presta atención a lo que sientes.",
+"the-empress":"La creatividad, el amor propio y la abundancia pueden crecer en tu vida. Cuida tus proyectos y relaciones con paciencia y dedicación.",
+"the-emperor":"Es momento de establecer orden, seguridad y límites saludables. La disciplina puede ayudarte a construir algo duradero.",
+"the-hierophant":"El aprendizaje y la orientación pueden ayudarte a tomar decisiones. Escucha distintas perspectivas sin renunciar a tu propio criterio.",
+"the-lovers":"El amor y las decisiones importantes te invitan a escuchar tu corazón. Busca reciprocidad, honestidad y coherencia entre palabras y acciones.",
+"the-chariot":"Avanza con determinación y mantén el rumbo hacia tus objetivos. La constancia será más importante que la prisa.",
+"strength":"Tu paciencia y valentía son fortalezas importantes. Puedes afrontar los retos con serenidad, firmeza y compasión.",
+"the-hermit":"Una pausa puede ayudarte a encontrar respuestas dentro de ti. Dedica tiempo a comprender qué necesitas realmente.",
+"wheel-of-fortune":"Los ciclos cambian. Mantente abierta a nuevas oportunidades y aprende a adaptarte cuando las circunstancias se transformen.",
+"justice":"Busca equilibrio y honestidad en tus decisiones. Analiza los hechos y considera las consecuencias antes de actuar.",
+"the-hanged-man":"Una nueva perspectiva puede transformar tu manera de ver las cosas. Tal vez sea momento de detenerte y reconsiderar tus prioridades.",
+"death":"El cierre de una etapa puede abrir espacio a una transformación. Deja atrás lo que ya no aporta a tu crecimiento.",
+"temperance":"La armonía llega con paciencia, moderación y equilibrio. Evita los extremos y permite que las cosas encuentren su ritmo.",
+"the-devil":"Reconoce los hábitos o apegos que pueden limitar tu libertad. Recuperar el control empieza por identificar lo que necesitas cambiar.",
+"the-tower":"Un cambio puede invitarte a reconstruir sobre bases más firmes. Aunque algo se transforme, también puedes encontrar nuevas posibilidades.",
+"the-star":"La esperanza y la renovación te invitan a recuperar la confianza. Cuida tus sueños y avanza paso a paso.",
+"the-moon":"Observa tus emociones y busca claridad antes de tomar decisiones. No todo lo que temes representa necesariamente lo que está ocurriendo.",
+"the-sun":"La claridad, la alegría y la vitalidad iluminan tus proyectos. Reconoce tus logros y comparte tu energía con quienes te hacen bien.",
+"judgement":"Es tiempo de reflexionar y reconocer nuevas oportunidades. Aprende de tus experiencias y permite que tus decisiones reflejen lo que hoy valoras.",
+"the-world":"Un ciclo llega a su culminación. Reconoce tus aprendizajes y prepárate para comenzar una nueva etapa."
 };
 
 const posiciones={
@@ -260,7 +325,8 @@ dinero:["Tu relación con la abundancia","Tu presente económico","Nuevas posibi
 futuro:["Lo que quedó atrás","Lo que necesitas comprender","Una dirección posible"]
 };
 
-let mazo=[],elegidas=[];
+let mazo=[],elegidas=[],cantidadPreguntas=0;
+let tipoActual="general",preguntaActual="";
 
 async function comenzar(){
  const boton=document.getElementById("comenzar");
@@ -279,12 +345,15 @@ async function comenzar(){
   }));
   if(mazo.length!==22)throw Error("Baraja incompleta");
 
+  tipoActual=document.getElementById("tipo").value;
+  preguntaActual=document.getElementById("pregunta").value.trim();
   elegidas=[];
   dibujar();
+
   document.getElementById("inicio").classList.add("hidden");
   document.getElementById("resultado").classList.add("hidden");
   document.getElementById("seleccion").classList.remove("hidden");
-  estado.textContent="";
+  window.scrollTo({top:0,behavior:"smooth"});
  }catch(e){
   estado.textContent="No pudimos cargar las cartas. Revisa tu conexión e inténtalo de nuevo.";
  }finally{boton.disabled=false}
@@ -299,10 +368,6 @@ function dibujar(){
   el.innerHTML=`
   <div class="inner">
    <div class="face back">
-    <span class="corner c1">✧</span>
-    <span class="corner c2">☾</span>
-    <span class="corner c3">☀</span>
-    <span class="corner c4">✧</span>
     <div class="orbit">
      <span class="moon">☾</span>
      <span class="sun">☀</span>
@@ -323,48 +388,174 @@ function dibujar(){
 function elegir(c,el){
  if(elegidas.length>=3||elegidas.some(x=>x.id===c.id))return;
  elegidas.push(c);
+ el.classList.add("revealed");
  el.classList.add("selected");
  actualizar();
 }
+
 function actualizar(){
  document.getElementById("contador").textContent=
  "Cartas elegidas: "+elegidas.length+" de 3";
  document.getElementById("revelar").disabled=elegidas.length!==3;
 }
+
 function revelar(){
  if(elegidas.length!==3)return;
- const tipo=document.getElementById("tipo").value;
- const pregunta=document.getElementById("pregunta").value.trim();
+
  document.getElementById("consulta").textContent=
- pregunta?"Tu pregunta: "+pregunta:"Tu lectura: "+tipo;
+ preguntaActual?"Tu pregunta: "+preguntaActual:
+ "Tu consulta: "+document.getElementById("tipo").selectedOptions[0].text;
+
  const zona=document.getElementById("lectura");
  zona.innerHTML="";
+
  elegidas.forEach((c,i)=>{
   const bloque=document.createElement("div");
   bloque.className="result-card";
+
   const h=document.createElement("h3");
-  h.textContent=(posiciones[tipo]||posiciones.general)[i];
+  h.textContent=(posiciones[tipoActual]||posiciones.general)[i];
+
   const img=document.createElement("img");
   img.src=c.image;img.alt=c.nombre;
+
   const nombre=document.createElement("h3");
   nombre.textContent=c.nombre;
+
   const p=document.createElement("p");
   p.textContent=c.significado;
-  bloque.append(h,img,nombre,p);
+
+  const extra=document.createElement("p");
+  extra.textContent=textoAmpliado(c,i);
+
+  bloque.append(h,img,nombre,p,extra);
   zona.appendChild(bloque);
  });
+
+ const resumen=elegidas.map(c=>c.nombre).join(", ");
  document.getElementById("mensaje").textContent=
- "Recuerda que las cartas son una invitación a reflexionar. Tu futuro también se construye con tus decisiones, tus acciones y tus sueños.";
+ "La combinación de "+resumen+" te invita a mirar tu situación desde una nueva perspectiva. No necesitas resolverlo todo de inmediato. Reconoce lo que has aprendido, escucha tus necesidades y elige acciones que estén en armonía con tus valores. Recuerda que las cartas ofrecen una reflexión simbólica: tus decisiones siguen estando en tus manos.";
+
+ cantidadPreguntas=0;
+ document.getElementById("respuestas").innerHTML="";
+ document.getElementById("preguntaExtra").value="";
+ document.getElementById("limite").textContent="";
+ actualizarPreguntas();
+
  document.getElementById("seleccion").classList.add("hidden");
  document.getElementById("resultado").classList.remove("hidden");
  window.scrollTo({top:0,behavior:"smooth"});
 }
+
+function textoAmpliado(c,i){
+ const tipo=tipoActual;
+ const textos={
+ general:[
+ "Esta carta representa experiencias que han contribuido a formar tu manera de ver la vida. Reconoce lo que has superado y conserva los aprendizajes que te ayudan a crecer.",
+ "En el presente, la carta invita a observar tus emociones y circunstancias con sinceridad. Pregúntate qué puedes cambiar y qué necesitas aceptar.",
+ "Como orientación para tu camino, esta carta sugiere avanzar con conciencia. Tus pequeñas decisiones pueden abrir posibilidades que hoy todavía no alcanzas a ver."
+ ],
+ amor:[
+ "En el corazón, esta carta invita a reconocer tus necesidades afectivas. El amor propio también forma parte de cualquier relación saludable.",
+ "En tu situación sentimental, observa si existe comunicación, respeto y reciprocidad. Las acciones cotidianas son tan importantes como las palabras.",
+ "En el camino del amor, date permiso para construir vínculos sanos. No fuerces respuestas: permite que la claridad llegue a través del diálogo y el tiempo."
+ ],
+ trabajo:[
+ "Tu experiencia anterior contiene aprendizajes que puedes aprovechar. Reconoce tus capacidades y aquello que deseas hacer de manera diferente.",
+ "En el trabajo, organiza tus prioridades y evalúa las oportunidades con calma. Una buena decisión necesita información y planificación.",
+ "Para tus proyectos, la carta invita a ser constante. Establece objetivos realistas y avanza con disciplina, sin compararte con los demás."
+ ],
+ dinero:[
+ "Tu relación con la abundancia también se construye con hábitos y decisiones. Revisa qué prácticas te han ayudado y cuáles puedes mejorar.",
+ "En tu presente económico, procura observar tus recursos y compromisos con claridad. Organizar tus gastos puede darte mayor tranquilidad.",
+ "Las nuevas posibilidades requieren preparación. Aprende, planifica y evalúa cuidadosamente cada oportunidad antes de comprometer tus recursos."
+ ],
+ futuro:[
+ "Lo que quedó atrás puede enseñarte algo importante, pero no tiene que definir lo que viene. Toma lo valioso y permite que el resto quede en el pasado.",
+ "Lo que necesitas comprender es que cada proceso tiene su ritmo. La paciencia y la reflexión pueden ayudarte a elegir con mayor claridad.",
+ "Una dirección posible aparece cuando alineas tus decisiones con tus objetivos. Construye tu camino con acciones concretas y confianza."
+ ]
+ };
+ return (textos[tipo]||textos.general)[i];
+}
+
+function responder(){
+ const campo=document.getElementById("preguntaExtra");
+ const pregunta=campo.value.trim();
+ const limite=document.getElementById("limite");
+
+ if(!pregunta){
+  limite.textContent="Escribe tu pregunta antes de enviarla.";
+  return;
+ }
+ if(cantidadPreguntas>=5){
+  limite.textContent="Has completado tus cinco preguntas. Para continuar necesitas una nueva consulta.";
+  return;
+ }
+
+ cantidadPreguntas++;
+ const respuesta=crearRespuesta(pregunta);
+ const bloque=document.createElement("div");
+ bloque.className="answer";
+
+ const q=document.createElement("p");
+ const strong=document.createElement("strong");
+ strong.textContent="Tu pregunta: ";
+ q.append(strong,document.createTextNode(pregunta));
+
+ const a=document.createElement("p");
+ a.textContent=respuesta;
+ bloque.append(q,a);
+ document.getElementById("respuestas").appendChild(bloque);
+
+ campo.value="";
+ actualizarPreguntas();
+
+ if(cantidadPreguntas===5){
+  limite.textContent="Has utilizado tus cinco preguntas. Para continuar, adquiere una nueva consulta de Alma Mística.";
+  document.getElementById("enviarPregunta").disabled=true;
+  const pago=document.createElement("a");
+  pago.className="pay";
+  pago.href="https://mpago.li/1FRVddo";
+  pago.target="_blank";
+  pago.rel="noopener";
+  pago.textContent="Adquirir nueva consulta - $15.000";
+  document.getElementById("chat").appendChild(pago);
+ }
+}
+
+function crearRespuesta(pregunta){
+ const cartas=elegidas.map(c=>c.nombre).join(", ");
+ const textos=elegidas.map(c=>c.significado).join(" ");
+ const p=pregunta.toLowerCase();
+
+ let enfoque="Tu consulta merece calma y reflexión. Observa cómo se relaciona con las tres cartas que aparecieron en tu lectura.";
+
+ if(p.includes("amor")||p.includes("pareja")||p.includes("persona")||p.includes("sentimiento")){
+  enfoque="En los asuntos del corazón, las cartas te invitan a buscar sinceridad, respeto y reciprocidad. Procura no interpretar silencios como certezas: una conversación honesta puede aportar claridad.";
+ }else if(p.includes("dinero")||p.includes("plata")||p.includes("econ")){
+  enfoque="En lo económico, la reflexión principal es organizar tus recursos, reconocer tus prioridades y evaluar las oportunidades sin apresurarte. La planificación es una aliada importante.";
+ }else if(p.includes("trabajo")||p.includes("empleo")||p.includes("negocio")){
+  enfoque="En el ámbito laboral, observa tus capacidades y las oportunidades que puedes preparar. La constancia, el aprendizaje y una buena planificación pueden ayudarte a avanzar.";
+ }else if(p.includes("futuro")||p.includes("pasará")||p.includes("suceder")){
+  enfoque="Sobre el futuro, las cartas no establecen hechos inevitables. Te invitan a reconocer posibilidades y elegir acciones que te acerquen a la vida que deseas construir.";
+ }
+
+ return enfoque+" En tu lectura aparecieron "+cartas+". "+textos+" Toma este mensaje como una orientación simbólica, no como una certeza. Tu criterio y tus decisiones son lo más importante.";
+}
+
+function actualizarPreguntas(){
+ document.getElementById("preguntasRestantes").textContent=
+ "Preguntas disponibles: "+(5-cantidadPreguntas)+" de 5";
+}
+
 function reiniciar(){
  document.getElementById("inicio").classList.remove("hidden");
  document.getElementById("seleccion").classList.add("hidden");
  document.getElementById("resultado").classList.add("hidden");
  document.getElementById("pregunta").value="";
  document.getElementById("estado").textContent="";
+ document.getElementById("enviarPregunta").disabled=false;
  window.scrollTo({top:0,behavior:"smooth"});
 }
 </script>
