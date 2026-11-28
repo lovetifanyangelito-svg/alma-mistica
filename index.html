@@ -7,70 +7,215 @@
 
 <style>
 *{box-sizing:border-box}
+
 body{
- margin:0;background:#10051c;color:#f9e7bd;
- font-family:Georgia,serif;text-align:center;
+ margin:0;
+ background:#10031f;
+ color:#f9e7bd;
+ font-family:Georgia,serif;
+ text-align:center;
 }
+
 header{
- background:linear-gradient(#170923dd,#170923ee),
- url("tarot.jpeg") center 40%/cover;
- min-height:390px;padding:35px 15px;
- display:flex;flex-direction:column;justify-content:center;
- border-bottom:2px solid #d9ad59;
- box-shadow:0 0 30px #a34de0;
+ background:
+ linear-gradient(#170923a8,#170923e8),
+ url("Tarot.jpeg") center 40%/cover;
+ min-height:390px;
+ padding:35px 15px;
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+ border-bottom:2px solid #e5bd65;
+ box-shadow:0 0 35px #a34de0;
 }
+
 h1{
- font-size:clamp(38px,8vw,65px);margin:12px 0;
- color:#ffdf91;text-shadow:0 0 18px #e5a83b;
+ font-size:clamp(38px,8vw,65px);
+ margin:12px 0;
+ color:#ffe29b;
+ text-shadow:0 0 18px #e5a83b;
 }
+
 header p{font-size:20px;color:#f8e6ff}
-.decoracion{color:#ffd779;font-size:25px;text-shadow:0 0 15px #f6c45c}
+
+.decoracion{
+ color:#ffd779;
+ font-size:25px;
+ text-shadow:0 0 15px #f6c45c;
+}
+
 main{max-width:950px;margin:auto;padding:18px}
+
 .altar{
- padding:25px 15px;border:2px solid #c99b4d;
+ padding:25px 15px;
+ border:2px solid #d9ad59;
  border-radius:22px;
  background:
- radial-gradient(ellipse at top,#54256b,#21102f 60%,#10051c);
- box-shadow:0 0 28px #8b45b5;
+ radial-gradient(ellipse at top,#62247f,#27103c 60%,#10031f);
+ box-shadow:0 0 30px #923bd1;
 }
+
 h2{color:#ffdc91}
+
 .velas{font-size:40px;margin:18px}
-.vela{display:inline-block;margin:0 12px;filter:drop-shadow(0 0 12px orange);animation:flama 1.4s infinite alternate}
-@keyframes flama{to{transform:scale(1.12)}}
+
+.vela{
+ display:inline-block;
+ margin:0 12px;
+ filter:drop-shadow(0 0 12px orange);
+ animation:flama 1.4s infinite alternate;
+}
+
+@keyframes flama{
+ to{transform:scale(1.12)}
+}
+
 select,input,textarea{
- width:100%;max-width:520px;padding:14px;margin:10px auto;
- border-radius:12px;border:1px solid #d5ad65;
- background:#24102f;color:#fff1d2;font-size:16px;
+ width:100%;
+ max-width:520px;
+ padding:14px;
+ margin:10px auto;
+ border-radius:12px;
+ border:1px solid #d5ad65;
+ background:#24102f;
+ color:#fff1d2;
+ font-size:16px;
 }
+
 button{
- padding:14px 20px;margin:9px;border:1px solid #ffe4a6;
- border-radius:12px;background:linear-gradient(135deg,#ffe39b,#bd852d);
- color:#291333;font-size:16px;font-weight:bold;
- cursor:pointer;box-shadow:0 0 15px #b98535;
+ padding:14px 20px;
+ margin:9px;
+ border:1px solid #ffe4a6;
+ border-radius:12px;
+ background:linear-gradient(135deg,#ffe39b,#bd852d);
+ color:#291333;
+ font-size:16px;
+ font-weight:bold;
+ cursor:pointer;
+ box-shadow:0 0 15px #b98535;
 }
+
 button:hover{box-shadow:0 0 25px #ffe39b}
-.cartas{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;margin:25px 0}
+
+.cartas{
+ display:flex;
+ flex-wrap:wrap;
+ justify-content:center;
+ gap:18px;
+ margin:28px 0;
+ perspective:1000px;
+}
+
 .carta{
- width:170px;min-height:245px;padding:15px;
- border:3px double #e1bd70;border-radius:14px;
- background:linear-gradient(145deg,#431b5e,#160a25);
- box-shadow:0 0 18px #a8792c;
+ width:170px;
+ min-height:250px;
+ position:relative;
+ border-radius:15px;
+ perspective:1000px;
 }
-.carta h3{color:#ffdf91}
-.simbolo{font-size:48px;margin:14px}
-.carta p{font-size:14px;line-height:1.5}
+
+.interior{
+ width:100%;
+ min-height:250px;
+ position:relative;
+ transform-style:preserve-3d;
+ transition:transform .9s ease;
+}
+
+.carta.revelada .interior{
+ transform:rotateY(180deg);
+}
+
+.reverso,.frente{
+ position:absolute;
+ inset:0;
+ min-height:250px;
+ border-radius:15px;
+ border:3px double #f4ce73;
+ backface-visibility:hidden;
+ -webkit-backface-visibility:hidden;
+ box-shadow:0 0 20px #d4a33f;
+}
+
+.reverso{
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ overflow:hidden;
+ background:
+ radial-gradient(circle at center,#70269a,#350c58 60%,#170526);
+}
+
+.reverso svg{
+ width:85%;
+ height:85%;
+ filter:drop-shadow(0 0 8px #e9bd59);
+}
+
+.reverso:after{
+ content:"✦";
+ position:absolute;
+ color:#ffe5a0;
+ font-size:25px;
+ text-shadow:0 0 15px gold;
+}
+
+.frente{
+ transform:rotateY(180deg);
+ padding:15px 10px;
+ background:linear-gradient(145deg,#64257f,#210c35);
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+}
+
+.frente h3{color:#ffdf91;font-size:17px}
+.frente .simbolo{font-size:43px;margin:10px}
+.frente strong{color:#ffe7a8}
+.frente p{font-size:13px;line-height:1.5}
+
 .resultado,.premium{
- margin:22px auto;padding:22px;max-width:750px;
- border:1px solid #d6ad61;border-radius:16px;
- background:#24102f;line-height:1.8;
+ margin:22px auto;
+ padding:22px;
+ max-width:750px;
+ border:1px solid #d6ad61;
+ border-radius:16px;
+ background:#24102f;
+ line-height:1.8;
 }
+
 .resultado{text-align:left}
+
+.resultado h2{text-align:center}
+
+.resultado h3{
+ color:#ffdc91;
+ border-bottom:1px solid #a8792c;
+ padding-bottom:7px;
+}
+
+.resultado p{line-height:1.8}
+
 .precio{font-size:32px;color:#ffdc91}
+
 .oculto{display:none}
-.mensaje{color:#ffe5a8;font-size:17px;line-height:1.7}
-footer{padding:25px;color:#d5c0e0;font-size:13px}
+
+.mensaje{
+ color:#ffe5a8;
+ font-size:17px;
+ line-height:1.7;
+}
+
+footer{
+ padding:25px;
+ color:#d5c0e0;
+ font-size:13px;
+}
+
 @media(max-width:500px){
  .carta{width:145px}
+ .reverso,.frente,.interior{min-height:230px}
  header{min-height:310px}
 }
 </style>
@@ -89,6 +234,7 @@ footer{padding:25px;color:#d5c0e0;font-size:13px}
 <section class="altar">
 
  <div class="decoracion">✧ Cadenas de luz dorada ✧</div>
+
  <div class="velas">
   <span class="vela">🕯️</span>
   <span class="vela">🕯️</span>
@@ -107,14 +253,17 @@ footer{padding:25px;color:#d5c0e0;font-size:13px}
  </select>
 
  <textarea id="pregunta" rows="3"
- placeholder="Escribe tu pregunta aquí (opcional)"></textarea>
+ placeholder="Escribe tu pregunta aquí"></textarea>
+
+ <p class="mensaje">✨ Tus tres cartas te esperan ✨</p>
+
+ <div id="cartas" class="cartas"></div>
 
  <button id="botonRevelar" onclick="revelar()">
   ✨ Revelar mis cartas ✨
  </button>
 
  <div id="aviso" class="mensaje"></div>
- <div id="cartas" class="cartas"></div>
  <div id="resultado" class="resultado oculto"></div>
 
  <div id="premium" class="premium oculto">
@@ -122,15 +271,13 @@ footer{padding:25px;color:#d5c0e0;font-size:13px}
   <h2>Lectura Premium</h2>
   <p class="mensaje">
    Tu primera lectura ya fue realizada.
-   Si deseas consultar otra pregunta, puedes acceder
-   a una nueva lectura premium.
+   Puedes acceder a una nueva consulta premium.
   </p>
-  <p>Interpretación más profunda y personalizada.</p>
+  <p>Una nueva experiencia de interpretación del Tarot.</p>
   <div class="precio">$15.000 COP</div>
   <button onclick="pagar()">Obtener lectura premium</button>
   <p class="mensaje">
-   Después de realizar el pago, regresa aquí y pulsa
-   el botón de confirmación.
+   Después de realizar el pago, regresa aquí.
   </p>
   <button onclick="confirmarPago()">Ya realicé el pago</button>
   <p id="estadoPago"></p>
@@ -172,41 +319,124 @@ const arcanosMayores=[
 
 const palos=["Copas","Espadas","Bastos","Oros"];
 const simbolos={Copas:"♡",Espadas:"⚔",Bastos:"♧",Oros:"◇"};
-const rangos=["As","Dos","Tres","Cuatro","Cinco","Seis","Siete","Ocho","Nueve","Diez","Sota","Caballero","Reina","Rey"];
+
+const rangos=[
+ "As","Dos","Tres","Cuatro","Cinco","Seis","Siete",
+ "Ocho","Nueve","Diez","Sota","Caballero","Reina","Rey"
+];
+
 const mazo=[];
 
 arcanosMayores.forEach(c=>{
- mazo.push({nombre:c[0],significado:c[1],simbolo:c[2]});
+ mazo.push({
+  nombre:c[0],
+  significado:c[1],
+  simbolo:c[2],
+  palo:"Mayor"
+ });
 });
+
+const significados=[
+ "un comienzo y una oportunidad",
+ "una elección o una alianza",
+ "crecimiento y colaboración",
+ "estabilidad y consolidación",
+ "un desafío que invita a aprender",
+ "armonía y recuperación",
+ "una prueba de paciencia",
+ "movimiento y progreso",
+ "madurez y preparación",
+ "culminación de un ciclo",
+ "curiosidad y nuevos aprendizajes",
+ "acción y determinación",
+ "sensibilidad y dominio interior",
+ "liderazgo y experiencia"
+];
 
 palos.forEach(palo=>{
  rangos.forEach((r,i)=>{
   mazo.push({
    nombre:r+" de "+palo,
-   significado:"Esta carta representa "+[
-    "un comienzo y una oportunidad",
-    "una elección o una alianza",
-    "crecimiento y colaboración",
-    "estabilidad y consolidación",
-    "un desafío que invita a aprender",
-    "armonía y recuperación",
-    "una prueba de paciencia",
-    "movimiento y progreso",
-    "madurez y preparación",
-    "culminación de un ciclo",
-    "curiosidad y nuevos aprendizajes",
-    "acción y determinación",
-    "sensibilidad y dominio interior",
-    "liderazgo y experiencia"
-   ][i]+" en el ámbito de "+palo.toLowerCase()+".",
-   simbolo:simbolos[palo]
+   significado:"Representa "+significados[i]+".",
+   simbolo:simbolos[palo],
+   palo:palo
   });
  });
 });
 
-let lecturaGratisUsada=localStorage.getItem("almaGratisUsada")==="si";
-let premiumDesbloqueado=false;
-let lecturaActual=null;
+const posiciones=["Pasado","Presente","Consejo"];
+
+const temas={
+ general:{
+  titulo:"Lectura general",
+  inicio:"Esta carta invita a observar tu momento de vida, los cambios que atraviesas y las oportunidades que puedes reconocer.",
+  final:"Tu camino se construye con las decisiones que tomas. Observa qué necesitas cerrar, qué merece tu atención y qué nuevo comienzo deseas permitir."
+ },
+ amor:{
+  titulo:"Amor y relaciones",
+  inicio:"En el terreno sentimental, esta carta invita a observar tus emociones, tus vínculos y la manera en que estás dando y recibiendo amor.",
+  final:"El amor también requiere respeto, comunicación y reciprocidad. Reflexiona sobre lo que necesitas emocionalmente y sobre los vínculos que te hacen bien."
+ },
+ trabajo:{
+  titulo:"Trabajo y abundancia",
+  inicio:"En el ámbito laboral y económico, esta carta representa una invitación a revisar tus proyectos, tus capacidades y la manera en que administras tus oportunidades.",
+  final:"La abundancia también se construye con organización, constancia y decisiones conscientes. Reconoce tus talentos y piensa cuál puede ser tu próximo paso."
+ },
+ espiritual:{
+  titulo:"Camino espiritual",
+  inicio:"En tu mundo interior, esta carta representa una oportunidad para escuchar tu intuición, reconocer tus aprendizajes y encontrar equilibrio.",
+  final:"Tu crecimiento interior necesita paciencia y conexión contigo. Date espacio para reflexionar, soltar cargas y fortalecer aquello que te da paz."
+ },
+ pregunta:{
+  titulo:"Respuesta a tu pregunta",
+  inicio:"Esta carta se interpreta como una reflexión simbólica sobre el asunto que has elegido consultar.",
+  final:"No tomes esta lectura como una respuesta inevitable. Observa las posibilidades, tus circunstancias y las decisiones que están en tus manos."
+ }
+};
+
+const interpretaciones={
+ general:{
+  Copas:"Tus emociones y relaciones personales merecen atención. Pregúntate qué te está dando tranquilidad y qué necesitas expresar.",
+  Espadas:"Es momento de ordenar tus pensamientos y mirar una situación con claridad antes de decidir.",
+  Bastos:"Tu energía, tus iniciativas y tus deseos de avanzar pueden abrirte nuevas posibilidades.",
+  Oros:"Tu estabilidad, tus recursos y tus proyectos necesitan cuidado, paciencia y planificación.",
+  Mayor:"Esta carta señala un aprendizaje importante en tu etapa actual."
+ },
+ amor:{
+  Copas:"El corazón, los sentimientos y la conexión emocional son protagonistas. Observa si existe reciprocidad y comprensión.",
+  Espadas:"La comunicación sincera puede ayudarte a aclarar dudas, sanar tensiones y establecer límites saludables.",
+  Bastos:"La atracción, la pasión y la iniciativa tienen un papel importante. Busca equilibrio entre deseo y respeto.",
+  Oros:"La confianza se demuestra con constancia, compromiso y acciones. Valora la estabilidad afectiva.",
+  Mayor:"Esta carta invita a reflexionar sobre una decisión o aprendizaje importante en el amor."
+ },
+ trabajo:{
+  Copas:"Tus relaciones laborales, motivaciones y satisfacción personal influyen en tu camino profesional.",
+  Espadas:"Analiza tus decisiones, organiza tus ideas y evita actuar por impulso ante los desafíos laborales.",
+  Bastos:"Tus proyectos, creatividad e iniciativa pueden ayudarte a impulsar nuevos objetivos.",
+  Oros:"La economía, el esfuerzo y la administración de recursos necesitan atención y planificación.",
+  Mayor:"Esta carta representa un aprendizaje o cambio que puedes aplicar a tus metas profesionales."
+ },
+ espiritual:{
+  Copas:"Reconoce tus emociones y permite que tu sensibilidad te ayude a comprenderte mejor.",
+  Espadas:"Busca silencio mental y claridad. No todas las respuestas aparecen cuando intentas controlar cada situación.",
+  Bastos:"Tu energía interior te invita a explorar tus talentos, motivaciones y propósito personal.",
+  Oros:"Conecta con el presente, cuida tu cuerpo y encuentra equilibrio en tus hábitos cotidianos.",
+  Mayor:"Esta carta representa una enseñanza para tu evolución y autoconocimiento."
+ },
+ pregunta:{
+  Copas:"Mira cómo intervienen tus sentimientos, relaciones y necesidades emocionales en esta situación.",
+  Espadas:"La respuesta simbólica te invita a revisar los hechos, aclarar dudas y comunicarte con honestidad.",
+  Bastos:"Observa qué acciones, iniciativas o cambios podrían acercarte a lo que deseas.",
+  Oros:"Considera los recursos, el tiempo y la estabilidad que requiere esta situación.",
+  Mayor:"Esta carta señala un aspecto central que merece tu reflexión sobre la pregunta."
+ }
+};
+
+function escapar(texto){
+ return texto.replace(/[&<>"']/g,c=>({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ }[c]));
+}
 
 function mezclar(){
  const copia=[...mazo];
@@ -217,17 +447,67 @@ function mezclar(){
  return copia;
 }
 
-function escapar(texto){
- return texto.replace(/[&<>"']/g,c=>({
- "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
- }[c]));
+function reversoSVG(){
+ return `
+ <svg viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="80,12 148,110 80,208 12,110"
+   fill="none" stroke="#f7d77d" stroke-width="2"/>
+  <polygon points="80,32 130,110 80,188 30,110"
+   fill="none" stroke="#d6a641" stroke-width="1.5"/>
+  <polygon points="80,55 112,110 80,165 48,110"
+   fill="none" stroke="#ffe5a0" stroke-width="1.5"/>
+  <path d="M80 12 L80 208 M12 110 L148 110"
+   stroke="#d9ae52" stroke-width="1"/>
+  <path d="M30 110 L130 110 M80 32 L80 188"
+   stroke="#ffe5a0" stroke-width="1"/>
+  <circle cx="80" cy="110" r="18"
+   fill="none" stroke="#ffe5a0" stroke-width="2"/>
+  <circle cx="80" cy="110" r="5" fill="#ffe5a0"/>
+  <circle cx="80" cy="32" r="3" fill="#ffe5a0"/>
+  <circle cx="80" cy="188" r="3" fill="#ffe5a0"/>
+  <circle cx="30" cy="110" r="3" fill="#ffe5a0"/>
+  <circle cx="130" cy="110" r="3" fill="#ffe5a0"/>
+  <path d="M80 78 L87 110 L80 142 L73 110 Z"
+   fill="none" stroke="#ffe5a0" stroke-width="1.5"/>
+ </svg>`;
 }
+
+function mostrarReversos(){
+ const contenedor=document.getElementById("cartas");
+ contenedor.innerHTML=posiciones.map(pos=>`
+  <div class="carta">
+   <div class="interior">
+    <div class="reverso">${reversoSVG()}</div>
+    <div class="frente"></div>
+   </div>
+  </div>
+ `).join("");
+}
+
+function interpretar(carta,tipo,posicion){
+ const contexto=interpretaciones[tipo];
+ let texto=contexto[carta.palo] || contexto.Mayor;
+
+ if(posicion==="Pasado"){
+  return "Lo que vienes viviendo: "+texto+" "+carta.significado;
+ }
+ if(posicion==="Presente"){
+  return "Tu momento actual: "+texto+" "+carta.significado;
+ }
+ return "Lo que puedes considerar: "+texto+" "+carta.significado;
+}
+
+let lecturaGratisUsada=
+ localStorage.getItem("almaGratisUsada")==="si";
+
+let premiumDesbloqueado=false;
+let lecturaActual=null;
 
 function revelar(){
  if(lecturaActual && !premiumDesbloqueado){
   document.getElementById("premium").classList.remove("oculto");
   document.getElementById("aviso").textContent=
-   "Tu lectura gratuita ya está revelada. Para hacer otra pregunta, selecciona la lectura premium.";
+   "Tu lectura gratuita ya está revelada. Para otra consulta necesitas acceso premium.";
   return;
  }
 
@@ -240,10 +520,19 @@ function revelar(){
 
  const tipo=document.getElementById("tipo").value;
  const pregunta=document.getElementById("pregunta").value.trim();
- const posiciones=["Pasado","Presente","Futuro"];
- const cartas=mezclar().slice(0,3);
 
- lecturaActual={tipo,pregunta,cartas};
+ if(tipo==="pregunta" && !pregunta){
+  document.getElementById("aviso").textContent=
+   "Escribe tu pregunta para preparar esta lectura.";
+  return;
+ }
+
+ lecturaActual={
+  tipo:tipo,
+  pregunta:pregunta,
+  cartas:mezclar().slice(0,3)
+ };
+
  mostrarLectura();
 
  if(!premiumDesbloqueado){
@@ -253,52 +542,60 @@ function revelar(){
 }
 
 function mostrarLectura(){
- const posiciones=["Pasado","Presente","Futuro"];
- const temas={
-  general:"Tu lectura general",
-  amor:"Amor y relaciones",
-  trabajo:"Trabajo y abundancia",
-  espiritual:"Camino espiritual",
-  pregunta:"Tu pregunta personal"
- };
+ const tipo=lecturaActual.tipo;
+ const tema=temas[tipo];
+ const cartas=lecturaActual.cartas;
 
- document.getElementById("cartas").innerHTML=
- lecturaActual.cartas.map((c,i)=>`
+ const contenedor=document.getElementById("cartas");
+
+ contenedor.innerHTML=cartas.map((c,i)=>`
   <div class="carta">
-   <h3>${posiciones[i]}</h3>
-   <div class="simbolo">${c.simbolo}</div>
-   <strong>${escapar(c.nombre)}</strong>
-   <p>${escapar(c.significado)}</p>
+   <div class="interior">
+    <div class="reverso">${reversoSVG()}</div>
+    <div class="frente">
+     <h3>${posiciones[i]}</h3>
+     <div class="simbolo">${c.simbolo}</div>
+     <strong>${escapar(c.nombre)}</strong>
+    </div>
+   </div>
   </div>
  `).join("");
 
- const introducciones={
-  general:"Esta lectura reúne símbolos para reflexionar sobre tu momento actual.",
-  amor:"Observa tus vínculos, sentimientos y necesidades afectivas.",
-  trabajo:"Reflexiona sobre tus proyectos, decisiones laborales y abundancia.",
-  espiritual:"Escucha tu interior y observa tu crecimiento personal.",
-  pregunta:"Dedica un momento a contemplar el tema que has traído a esta consulta."
- };
+ requestAnimationFrame(()=>{
+  document.querySelectorAll(".carta").forEach((c,i)=>{
+   setTimeout(()=>c.classList.add("revelada"),i*350);
+  });
+ });
 
  const pregunta=lecturaActual.pregunta?
-  "<p><strong>Tu pregunta:</strong> "+escapar(lecturaActual.pregunta)+"</p>":"";
+  `<p><strong>Tu pregunta:</strong> ${escapar(lecturaActual.pregunta)}</p>`:"";
 
  document.getElementById("resultado").innerHTML=`
-  <h2>${temas[lecturaActual.tipo]}</h2>
+  <h2>${tema.titulo}</h2>
   ${pregunta}
-  <p>${introducciones[lecturaActual.tipo]}</p>
-  ${lecturaActual.cartas.map((c,i)=>`
-   <p><strong>${posiciones[i]} — ${escapar(c.nombre)}:</strong>
-   ${escapar(c.significado)}</p>
+  <p>${tema.inicio}</p>
+
+  ${cartas.map((c,i)=>`
+   <h3>${posiciones[i]} — ${escapar(c.nombre)}</h3>
+   <p>${interpretar(c,tipo,posiciones[i])}</p>
   `).join("")}
-  <p><strong>Mensaje final:</strong>
-  Observa cómo se relacionan los mensajes de las tres cartas.
-  Tómate tu tiempo para reflexionar sobre lo que representan en tu vida.</p>
+
+  <h3>✧ Mensaje que une tus tres cartas ✧</h3>
+  <p>
+   Las tres cartas te invitan a relacionar lo que has vivido,
+   lo que estás experimentando y las acciones que puedes considerar.
+   No tienes que resolverlo todo de inmediato:
+   cada paso consciente puede ayudarte a encontrar mayor claridad.
+  </p>
+
+  <h3>Consejo final</h3>
+  <p>${tema.final}</p>
  `;
 
  document.getElementById("resultado").classList.remove("oculto");
  document.getElementById("aviso").textContent=
-  "Tu lectura ha quedado revelada. Las cartas no cambiarán si vuelves a pulsar el botón.";
+  "✨ Tus tres cartas han sido reveladas. Tómate un momento para leer sus mensajes.";
+ document.getElementById("premium").classList.add("oculto");
 }
 
 function pagar(){
@@ -307,8 +604,11 @@ function pagar(){
 
 function confirmarPago(){
  document.getElementById("estadoPago").textContent=
-  "La confirmación automática de Mercado Pago todavía no está conectada. Para proteger tus pagos, el acceso premium debe habilitarse después de verificar el comprobante.";
+  "La confirmación automática de Mercado Pago todavía no está conectada. El acceso premium debe habilitarse después de verificar el pago.";
 }
+
+mostrarReversos();
 </script>
+
 </body>
 </html>
